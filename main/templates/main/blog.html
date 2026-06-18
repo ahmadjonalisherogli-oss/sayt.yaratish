@@ -1,0 +1,15 @@
+{% extends "main/base.html" %}
+{% block title %}Blog{% endblock %}
+{% block content %}
+    <h1>Blog</h1>
+
+    {% if posts %}
+        <ul>
+            {% for post in posts %}
+                <li>{{ post.title }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Ma’lumot yo‘q</p>
+    {% endif %}
+{% endblock %}
