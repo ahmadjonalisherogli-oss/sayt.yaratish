@@ -14,7 +14,7 @@ def product_detail(request, product_slug):
     return render(request, "main/product_detail.html", {"product": product})
 
 def category_detail(request, slug):
-    category = Category.objects.get(slug=slug)   # ✅ slug bo‘yicha qidiradi
+    category = Category.objects.get(slug=slug)   
     products = Product.objects.filter(category=category)
     return render(request, "main/product_list.html", {"products": products})
 
@@ -46,7 +46,7 @@ def sale (request):
     return render(request, "main/sale.html", {"products": products})
 
 def blog(request):
-    posts = []  # Agar blog modeli bo‘lsa, shu yerda chaqirasan
+    posts = [] 
     return render(request, "main/blog.html", {"posts": posts})
 
 def groceries(request):
