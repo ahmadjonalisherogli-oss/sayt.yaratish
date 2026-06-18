@@ -1,26 +1,16 @@
-{% extends 'main/base.html' %} <!-- Agar asosiy shablon bo'lsa -->
+{% extends 'main/base.html' %}
 
 {% block content %}
-<div class="container">
-    <h2>Bizning Mahsulotlar</h2>
-    <div class="row">
-        
-        {% for product in products %}
-        <div class="col-md-4">
-            <div class="card">
-                <!-- Mahsulot rasmi, nomi va narxi -->
-                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ product.name }}</h5>
-                    <p class="card-text">{{ product.price }} so'm</p>
-                    <a href="#" class="btn btn-primary">Sotib olish</a>
-                </div>
-            </div>
-        </div>
-        {% empty %}
-        <p>Hozircha mahsulotlar mavjud emas.</p>
-        {% endfor %}
+<h2>Bizning Mahsulotlar</h2>
 
-    </div>
-</div>
+{% for product in products %}
+  <div>
+    <h4>{{ product.name }}</h4>
+    <p>{{ product.price }} so'm</p>
+    <button>Sotib olish</button>
+  </div>
+  <br> 
+{% empty %}
+  <p>Hozircha mahsulotlar mavjud emas.</p>
+{% endfor %}
 {% endblock %}
