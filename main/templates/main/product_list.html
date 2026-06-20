@@ -7,7 +7,7 @@
   <div>
     <h4>{{ product.name }}</h4>
     <p>{{ product.price }} so'm</p>
-    <button>Sotib olish</button>
+    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary">Sotib olish</a>
   </div>
   <br> 
 {% empty %}

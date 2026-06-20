@@ -1,15 +1,20 @@
 {% extends "main/base.html" %}
 {% block title %}Men{% endblock %}
-{% block content %}
-    <h1>Men's Collection</h1>
 
-    {% if products %}
-        <ul>
-            {% for product in products %}
-                <li>{{ product.name }} - {{ product.price }} so‘m</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>Ma’lumot yo‘q</p>
-    {% endif %}
+{% block content %}
+<h1>Men's Collection</h1>
+
+{% if products %}
+    <ul>
+        {% for product in products %}
+            <li>
+                {{ product.name }} - {{ product.price }} so‘m
+                <a href="{% url 'add_to_cart' product.pk %}">Sotib olish</a> <br> <br>
+                <a href="{% url 'home' %}">Bosh sahifa</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Mahsulot yo‘q</p>
+{% endif %}
 {% endblock %}

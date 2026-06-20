@@ -22,14 +22,8 @@ class Product(models.Model):
         return self.name
 
 
-from django.db import models
+class Cart(models.Model):
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=1)
 
-class Offer(models.Model):
-    title = models.CharField(max_length=200)       
-    category = models.CharField(max_length=100)    
-    description = models.CharField(max_length=200, blank=True, null=True) 
-    discount = models.PositiveIntegerField(default=0) 
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f"{self.title} - {self.category}"

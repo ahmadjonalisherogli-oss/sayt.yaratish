@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category , Offer
-
+from .models import Product, Category , Cart
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ("name", "slug")
@@ -12,7 +11,8 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ("category", "is_trending", "is_popular", "is_discounted")
     search_fields = ("name", "description")
 
-@admin.register(Offer)
-class OfferAdmin(admin.ModelAdmin):
-    list_display = ("title", "category", "discount", "description", "created_at")
-    search_fields = ("title", "category")
+@admin.register(Cart)
+class CartAdmin(admin.ModelAdmin):
+    list_display = ("user", "product", "quantity")
+    list_filter = ("user",)
+    search_fields = ("product__name",)

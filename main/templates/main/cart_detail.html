@@ -1,0 +1,15 @@
+<h2>Sizning savatingiz</h2>
+
+<ul>
+    {% for item in cart_items %}
+        <li>
+            <strong>{{ item.product.name }}</strong> — 
+            Narxi: {{ item.product.price }} so'm — 
+            Soni: {{ item.quantity }} ta
+        </li>
+    {% empty %}
+        <li>Savatingiz hozircha bo‘sh.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'home' %}">Xaridni davom ettirish</a>

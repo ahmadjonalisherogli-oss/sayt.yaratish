@@ -1,15 +1,19 @@
 {% extends "main/base.html" %}
 {% block title %}Accessories{% endblock %}
-{% block content %}
-    <h1>Accessories</h1>
 
-    {% if products %}
-        <ul>
-            {% for product in products %}
-                <li>{{ product.name }} - {{ product.price }} so‘m</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>Ma’lumot yo‘q</p>
-    {% endif %}
+{% block content %}
+<h1>Accessories</h1>
+
+{% if products %}
+    <ul>
+        {% for product in products %}
+            <li>
+                {{ product.name }} - {{ product.price }} so‘m
+                <a href="{% url 'add_to_cart' product.pk %}">Sotib olish</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Mahsulot yo‘q</p>
+{% endif %}
 {% endblock %}
