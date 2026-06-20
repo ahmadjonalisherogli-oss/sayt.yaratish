@@ -89,8 +89,7 @@ def search_products(request):
 
 def add_to_cart(request, product_id):
     if not request.user.is_authenticated:
-        login_url = reverse('login')
-        return redirect(f"{login_url}?next={request.path}")
+        return redirect('login')
 
     product = Product.objects.get(id=product_id)
     cart_item, created = Cart.objects.get_or_create(user=request.user, product=product)
