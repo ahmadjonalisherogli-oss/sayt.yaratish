@@ -39,5 +39,5 @@ class Promotion(models.Model):
         ordering = ["order"]
 
     def __str__(self):
-        return f"{self.discount_percent}% - {self.title}"
+        return f"{self.discount_percent} - {self.title}"
 
