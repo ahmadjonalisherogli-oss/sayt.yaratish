@@ -17,11 +17,12 @@ urlpatterns = [
     path("groceries/", views.groceries, name="groceries"),
     path("drinks/", views.drinks, name="drinks"),
     path("chocolates/", views.chocolates, name="chocolates"),
-    path("search/", views.search_products, name="search"),
     path("brand/", views.brand, name="brand"),
     path("cart/add/<int:product_id>/", views.add_to_cart, name="add_to_cart"),
     path("cart/", views.cart_detail, name="cart_detail"),
     path("login/", auth_views.LoginView.as_view(template_name="main/login.html"), name="login"),
-
+    path("baked-products/", views.baked_products, name="baked_products"),
+    path("category/<slug:slug>/", views.category_detail, name="category_detail"),
+    path("drinks/", views.drinks, name="drinks"),
 ]
 

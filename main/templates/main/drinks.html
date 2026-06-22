@@ -1,0 +1,19 @@
+{% extends "main/base.html" %}
+{% block title %}Drinks{% endblock %}
+{% block content %}
+<h1>Drinks</h1>
+{% if products %}
+    <ul>
+        {% for product in products %}
+            <li>
+                {{ product.name }} - {{ product.price }} so'm <br> <br>
+                <a href="{% url 'add_to_cart' product.pk %}">Sotib olish</a>
+
+                <a href="{% url 'home' %}">Bosh sahifa</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Mahsulot yo'q</p>
+{% endif %}
+{% endblock %}

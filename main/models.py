@@ -27,3 +27,17 @@ class Cart(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
 
+class Promotion(models.Model):
+    title = models.CharField(max_length=200)
+    discount_percent = models.PositiveIntegerField()
+    image = models.ImageField(upload_to="promotions/")
+    link = models.CharField(max_length=200, blank=True, default="#")
+    order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ["order"]
+
+    def __str__(self):
+        return f"{self.discount_percent}% - {self.title}"
+

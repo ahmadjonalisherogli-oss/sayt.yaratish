@@ -1,13 +1,14 @@
 
 
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Product, Cart, Category
+from .models import Product, Cart, Category, Promotion
 from django.urls import reverse
 
 
 def home_page(request):
     products = Product.objects.all()
-    return render(request, "main/index.html", {"products": products})
+    promotions = Promotion.objects.filter(is_active=True)
+    return render(request, "main/index.html", {"products": products, "promotions": promotions})
 
 
 def product_list(request):
@@ -80,11 +81,6 @@ def brand(request):
     return render(request, "main/brand.html", {"products": products})
 
 
-def search_products(request):
-    query = request.GET.get("q", "")
-    products = Product.objects.filter(name__icontains=query) if query else []
-    return render(request, "main/search_results.html", {"products": products, "query": query})
-
 
 
 def add_to_cart(request, product_id):
@@ -106,3 +102,8 @@ def cart_detail(request):
 
     cart_items = Cart.objects.filter(user=request.user)
     return render(request, "main/cart_detail.html", {"cart_items": cart_items})
+
+
+def baked_products(request):
+    products = Product.objects.filter(category__slug="baked-products")
+    return render(request, "main/baked_products.html", {"products": products})
